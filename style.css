@@ -529,3 +529,416 @@ body {
     left: 1.5rem;
   }
 }
+
+/* ============================================================
+   ABOUT
+   ============================================================ */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 5rem;
+  align-items: start;
+}
+
+/* ── Content Needed box ── */
+.content-needed-box {
+  border: 1.5px dashed rgba(201, 145, 61, 0.45);
+  background: rgba(201, 145, 61, 0.04);
+  border-radius: 2px;
+  padding: 2rem 2rem 2rem 2rem;
+  margin-top: 0.5rem;
+}
+
+.cn-badge {
+  display: inline-block;
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: rgba(201, 145, 61, 0.12);
+  padding: 0.25rem 0.65rem;
+  border-radius: 2px;
+  margin-bottom: 1rem;
+}
+
+.cn-title {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 1.25rem;
+}
+
+.cn-instructions {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--text-mid);
+  line-height: 1.75;
+}
+
+.cn-instructions p {
+  margin-bottom: 0.75rem;
+}
+
+.cn-instructions ul {
+  padding-left: 1.2rem;
+  margin-bottom: 0.75rem;
+}
+
+.cn-instructions ul li {
+  margin-bottom: 0.3rem;
+  color: var(--text-mid);
+}
+
+/* ── Sidebar ── */
+.about-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.sidebar-block {
+  padding: 1.75rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.sidebar-block:first-child {
+  border-top: 1px solid var(--border);
+}
+
+.sidebar-label {
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 0.65rem;
+}
+
+.sidebar-block p {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.sidebar-sub {
+  font-size: 0.82rem !important;
+  color: var(--text-light) !important;
+  margin-top: 0.15rem;
+}
+
+.sidebar-quote {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.sidebar-quote blockquote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: var(--text-mid);
+  line-height: 1.65;
+  margin-bottom: 0.75rem;
+}
+
+.sidebar-quote cite {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: var(--text-light);
+}
+
+/* About responsive */
+@media (max-width: 960px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .about-sidebar {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .sidebar-block {
+    flex: 1 1 200px;
+    padding: 1.5rem 1.5rem 1.5rem 0;
+    border-top: none;
+    border-bottom: none;
+    border-right: 1px solid var(--border);
+  }
+
+  .sidebar-block:last-child {
+    border-right: none;
+    flex-basis: 100%;
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .about-sidebar {
+    flex-direction: column;
+  }
+
+  .sidebar-block {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+}
+
+/* ============================================================
+   SERVICES
+   ============================================================ */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5px;
+  background: var(--border);
+  border: 1.5px solid var(--border);
+  margin-bottom: 4rem;
+}
+
+.service-card {
+  background: var(--bg-2);
+  padding: 2.5rem 2rem;
+  position: relative;
+  transition: background 0.2s var(--ease);
+}
+
+[data-theme="dark"] .service-card {
+  background: var(--bg-3);
+}
+
+.service-card:hover {
+  background: var(--bg);
+}
+
+[data-theme="dark"] .service-card:hover {
+  background: var(--bg-2);
+}
+
+.service-number {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 300;
+  color: var(--border-strong);
+  line-height: 1;
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+.service-title {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.4rem;
+  line-height: 1.2;
+}
+
+.service-for {
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 1.25rem;
+}
+
+.service-desc {
+  font-family: var(--font-body);
+  font-size: 0.93rem;
+  color: var(--text-mid);
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.service-includes {
+  margin-bottom: 1.25rem;
+}
+
+.service-includes h4 {
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 0.6rem;
+}
+
+.service-includes ul {
+  list-style: none;
+  padding: 0;
+}
+
+.service-includes ul li {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: var(--text-mid);
+  padding: 0.3rem 0;
+  border-bottom: 1px solid var(--border);
+  line-height: 1.5;
+}
+
+.service-includes ul li::before {
+  content: '— ';
+  color: var(--green);
+  font-size: 0.8em;
+}
+
+.service-not {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-style: italic;
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+.service-not strong {
+  font-style: normal;
+  font-weight: 500;
+  color: var(--burgundy);
+}
+
+/* ── How It Works ── */
+.how-it-works {
+  padding: 3.5rem 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 3rem;
+}
+
+.hiw-heading {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 500;
+  font-style: italic;
+  color: var(--text-light);
+  margin-bottom: 2.5rem;
+  letter-spacing: 0.02em;
+}
+
+.hiw-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+}
+
+.hiw-step {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+.hiw-num {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: var(--green);
+  line-height: 1;
+  flex-shrink: 0;
+  opacity: 0.45;
+}
+
+.hiw-step strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.4rem;
+}
+
+.hiw-step p {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--text-mid);
+  line-height: 1.7;
+}
+
+/* ── Coming Soon card ── */
+.coming-soon-card {
+  border: 1.5px dashed var(--border-strong);
+  border-radius: 2px;
+  padding: 2rem 2.5rem;
+  margin-bottom: 3rem;
+  display: flex;
+  align-items: center;
+}
+
+.cs-inner {
+  max-width: 480px;
+}
+
+.cs-badge {
+  display: inline-block;
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: rgba(201, 145, 61, 0.1);
+  padding: 0.25rem 0.65rem;
+  border-radius: 2px;
+  margin-bottom: 0.75rem;
+}
+
+.coming-soon-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.4rem;
+}
+
+.coming-soon-card p {
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  color: var(--text-mid);
+  line-height: 1.7;
+}
+
+/* ── Services CTA ── */
+.services-cta {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.services-cta p {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-style: italic;
+  color: var(--text-mid);
+}
+
+/* Services responsive */
+@media (max-width: 960px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5px;
+  }
+
+  .hiw-steps {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .services-cta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+}
