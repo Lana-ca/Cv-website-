@@ -77,3 +77,15 @@ filterBtns.forEach(btn => {
     });
   });
 });
+
+/* ── CONTACT FORM ── */
+const form        = document.getElementById('inquiryForm');
+const formSuccess = document.getElementById('formSuccess');
+
+if (form) {
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    form.style.display = 'none';
+    formSuccess.hidden = false;
+  });
+}
