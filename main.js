@@ -60,3 +60,20 @@ const sectionObserver = new IntersectionObserver(entries => {
 }, { rootMargin: '-40% 0px -55% 0px' });
 
 sections.forEach(s => sectionObserver.observe(s));
+
+/* ── PORTFOLIO FILTER ── */
+const filterBtns = document.querySelectorAll('.filter-btn');
+const workCards  = document.querySelectorAll('.work-card');
+
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const filter = btn.dataset.filter;
+    workCards.forEach(card => {
+      const match = filter === 'all' || card.dataset.category === filter;
+      card.classList.toggle('hidden', !match);
+    });
+  });
+});
