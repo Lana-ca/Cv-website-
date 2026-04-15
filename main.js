@@ -89,3 +89,67 @@ if (form) {
     formSuccess.hidden = false;
   });
 }
+
+/* ── MODAL ── */
+const overlay    = document.getElementById('modal-overlay');
+const modalTitle = document.getElementById('modal-title');
+const modalTag   = overlay.querySelector('.modal-tag');
+const modalByline = overlay.querySelector('.modal-byline');
+const modalBody  = overlay.querySelector('.modal-body');
+const modalClose = document.getElementById('modalClose');
+let   lastFocused = null;
+
+function openModal(card) {
+  const storeId = card.dataset.modal;
+  const store   = document.getElementById(storeId);
+  if (!store) return;
+
+  // Populate tag — copy class from card tag for colour-coding
+  const cardTag = card.querySelector('.card-tag');
+  modalTag.textContent = cardTag ? cardTag.textContent : '';
+  modalTag.className   = 'modal-tag ' +
+    (cardTag ? (Array.from(cardTag.classList).find(c => c.startsWith('tag-')) || '') : '');
+
+  // Populate title and byline
+  modalTitle.textContent  = card.querySelector('.card-title').textContent.trim();
+  modalByline.textContent = card.dataset.byline || '';
+
+  // Populate body from store
+  modalBody.innerHTML = store.innerHTML;
+
+  // Show overlay, lock scroll
+  lastFocused = document.activeElement;
+  overlay.hidden = false;
+  document.body.style.overflow = 'hidden';
+  modalClose.focus();
+}
+
+function closeModal() {
+  overlay.hidden = true;
+  document.body.style.overflow = '';
+  if (lastFocused) lastFocused.focus();
+}
+
+// Wire up all clickable cards
+document.querySelectorAll('.work-card[data-modal]').forEach(card => {
+  card.setAttribute('tabindex', '0');
+  card.setAttribute('role', 'button');
+  card.addEventListener('click', () => openModal(card));
+  card.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      openModal(card);
+    }
+  });
+});
+
+// Close handlers
+modalClose.addEventListener('click', closeModal);
+
+overlay.addEventListener('click', e => {
+  if (e.target === overlay) closeModal();
+});
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && !overlay.hidden) closeModal();
+});
